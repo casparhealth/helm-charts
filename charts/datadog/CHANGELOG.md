@@ -1,5 +1,13 @@
 # Datadog changelog
 
+## 3.14.0
+
+* Make the root filesystem of the cluster agent container read only by default
+
+## 3.13.0
+
+* Beta: Support APM library injection with Remote Configuration.
+
 ## 3.12.0
 
 * Add `automountServiceAccountToken` option to configure automatic mounting of ServiceAccount's API credentials
