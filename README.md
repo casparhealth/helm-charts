@@ -34,7 +34,7 @@ git merge upstream/main
 git push origin main
 ```
 
-6. Now you can use our updated `charts/datadog/values.yaml` template in the `infrastructure-modules//modules/services/k8s-datadog` module.
+6. Now you can use our updated `charts/datadog/values.yaml` template in the [infrastructure-modules](https://github.com/casparhealth/infrastructure-modules/tree/master/services/k8s-datadog/templates) module.
 
 
 # Datadog Helm Charts
