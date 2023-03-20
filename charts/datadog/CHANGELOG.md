@@ -1,5 +1,17 @@
 # Datadog changelog
 
+# 3.20.1
+
+* Fix command args in linux init container to prevent blocking deployment in GKE Autopilot.  
+
+# 3.20.0
+
+* Enable CWS network detections by default.
+
+## 3.19.2
+
+* Fix R/W volume mounts in init containers on Windows
+
 # 3.19.1
 
 * Mount emptyDir volumes in `/etc/datadog-agent` and `/tmp` to allow the cluster-agent to write files in those
