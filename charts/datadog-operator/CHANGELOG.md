@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.0.2
+
+* Use `.Release.Name` for reference to conversion webhook certificate in datadog-operator deployment.yaml
+
+
+## 1.0.1
+
+* Use `.Release.Name` for conversion webhook certificate / issuer name to align with the certificate name generated in datadog-crds sub-chart
+
+## 1.0.0
+
+* Default image is now `1.0.0`
+* Updated documentation.
+* Stored Version is v2alpha1 by default:
+    * If you are using a chart 0.X, refer to the [Migration Steps](https://github.com/DataDog/helm-charts/blob/main/charts/datadog-operator/README.md#migrating-to-the-version-10-of-the-datadog-operator).
+* Added Failure exceptions to avoid breaking changes:
+    * Added exception when using unsupported version of the DatadogAgent object for the configured version of the Datadog Operator.
+
+## 0.10.1
+
+* Add configuration for new Operator parameters `maximumGoroutines` and `datadogAgentEnabled`.
+
+## 0.10.0
+
+* Add ability to use the conversion webhook
+* Add dependency on the cert manager to manage the certificates of the conversion webhook
+* Note that the option to enable the various CRDs has changed from `datadog-crds` to `datadogCRDs`.
+
 ## 0.9.2
 
 * Updating CRD dependency to DatadogMonitors and DatadogAgent.

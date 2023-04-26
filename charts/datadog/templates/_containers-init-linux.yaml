@@ -1,13 +1,13 @@
 {{- define "containers-init-linux" -}}
 - name: init-volume
+{{- if not .Values.providers.gke.autopilot }}
+{{ include "generate-security-context" (dict "securityContext" .Values.agents.containers.initContainers.securityContext "targetSystem" .Values.targetSystem "seccomp" "" "kubeversion" .Capabilities.KubeVersion.Version) | indent 2 }}
+{{- end }}
   image: "{{ include "image-path" (dict "root" .Values "image" .Values.agents.image) }}"
   imagePullPolicy: {{ .Values.agents.image.pullPolicy }}
-  command:
-    - cp
+  command: ["bash", "-c"]
   args:
-    - -r
-    - /etc/datadog-agent
-    - /opt
+    - cp -r /etc/datadog-agent /opt
   volumeMounts:
     - name: config
       mountPath: /opt/datadog-agent
@@ -15,6 +15,9 @@
   resources:
 {{ toYaml .Values.agents.containers.initContainers.resources | indent 4 }}
 - name: init-config
+{{- if not .Values.providers.gke.autopilot }}
+{{ include "generate-security-context" (dict "securityContext" .Values.agents.containers.initContainers.securityContext "targetSystem" .Values.targetSystem "seccomp" "" "kubeversion" .Capabilities.KubeVersion.Version) | indent 2 }}
+{{- end }}
   image: "{{ include "image-path" (dict "root" .Values "image" .Values.agents.image) }}"
   imagePullPolicy: {{ .Values.agents.image.pullPolicy }}
   command:
