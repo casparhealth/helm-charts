@@ -118,7 +118,7 @@ datadog:
   dd_url:  # https://app.datadoghq.com
 
   # datadog.logLevel -- Set logging verbosity, valid log levels are: trace, debug, info, warn, error, critical, off
-  logLevel: DEBUG
+  logLevel: INFO
 
   # datadog.kubeStateMetricsEnabled -- If true, deploys the kube-state-metrics deployment
 
