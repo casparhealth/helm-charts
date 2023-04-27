@@ -966,7 +966,21 @@ clusterAgent:
   # clusterAgent.confd -- Provide additional cluster check configurations. Each key will become a file in /conf.d.
 
   ## ref: https://docs.datadoghq.com/agent/autodiscovery/
+%{ if postgres_monitoring_enabled }
+  confd:
+    postgres.yaml: |-
+      cluster_check: true
+      init_config:
+      instances:
+        - dbm: ${postgres_monitoring_enabled}
+          host: '${postgres_host}'
+          port: 5432
+          username: datadog
+          password: '${postgres_pass}'
+          dbname: '${postgres_db}'
+%{ else }
   confd: {}
+%{ endif }
   #   mysql.yaml: |-
   #     cluster_check: true
   #     instances:
